@@ -1,0 +1,1 @@
+﻿CREATE UNIQUE INDEX [UX_Application_PersonAddress_PersonID_AddressID_AddressTypeID] ON [Application].[PersonAddress] ([PersonID], [AddressID], [AddressTypeID]);

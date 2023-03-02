@@ -1,0 +1,1 @@
+﻿CREATE UNIQUE INDEX [UX_Application_User_LogonName] ON [Application].[User] ([LogonName]);

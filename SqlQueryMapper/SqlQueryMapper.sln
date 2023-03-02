@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlQueryMapper", "SqlQueryM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlQueryMapper.Tests", "SqlQueryMapper.Tests\SqlQueryMapper.Tests.csproj", "{75DE8AAE-A13B-4B3C-8A04-1F45EC641C76}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SqlQueryMapper.Tests.SSDT", "SqlQueryMapper.Tests.SSDT\SqlQueryMapper.Tests.SSDT.sqlproj", "{0B133344-E38F-4ACD-9A20-ADC12EDDF44A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{75DE8AAE-A13B-4B3C-8A04-1F45EC641C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75DE8AAE-A13B-4B3C-8A04-1F45EC641C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75DE8AAE-A13B-4B3C-8A04-1F45EC641C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B133344-E38F-4ACD-9A20-ADC12EDDF44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B133344-E38F-4ACD-9A20-ADC12EDDF44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B133344-E38F-4ACD-9A20-ADC12EDDF44A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0B133344-E38F-4ACD-9A20-ADC12EDDF44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B133344-E38F-4ACD-9A20-ADC12EDDF44A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B133344-E38F-4ACD-9A20-ADC12EDDF44A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

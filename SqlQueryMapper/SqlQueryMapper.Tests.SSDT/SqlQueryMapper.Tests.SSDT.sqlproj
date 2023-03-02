@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>AdoNetBasics.SSDT</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{0b133344-e38f-4acd-9a20-adc12eddf44a}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>AdoNetBasics.SSDT</RootNamespace>
+    <AssemblyName>AdoNetBasics.SSDT</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Application" />
+    <Folder Include="Sequences" />
+    <Folder Include="Sequences\Sequences" />
+    <Folder Include="Application\Indexes" />
+    <Folder Include="Application\Tables" />
+    <Folder Include="Application\Stored Procedures" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Application" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Sequences\Sequences.sql" />
+    <Build Include="Application\Stored Procedures\TemporalTables_DeactivateTemporalTables.sql" />
+    <Build Include="Application\Application.sql" />
+    <Build Include="Application\Indexes\UX_Application_PersonAddress_PersonID_AddressID_AddressTypeID.sql" />
+    <Build Include="Application\Tables\Address.sql" />
+    <Build Include="Application\Tables\AddressType.sql" />
+    <Build Include="Application\Tables\Person.sql" />
+    <Build Include="Application\Tables\PersonAddress.sql" />
+    <Build Include="Application\Tables\User.sql" />
+    <Build Include="Sequences\Sequences\AddressID.sql" />
+    <Build Include="Sequences\Sequences\AddressTypeID.sql" />
+    <Build Include="Sequences\Sequences\PersonAddressID.sql" />
+    <Build Include="Sequences\Sequences\PersonID.sql" />
+    <Build Include="Sequences\Sequences\UserID.sql" />
+    <Build Include="Application\Stored Procedures\TemporalTables_ReactivateTemporalTables.sql" />
+    <Build Include="Application\Stored Procedures\Application_Address_Create.sql" />
+    <Build Include="Application\Stored Procedures\Application_Person_Create.sql" />
+    <None Include="Scripts\Application\pds-110-ins-application-address-type.sql" />
+    <PostDeploy Include="Scripts\Script.PostDeployment1.sql">
+      <SuppressTSqlWarnings>
+      </SuppressTSqlWarnings>
+    </PostDeploy>
+    <Build Include="Application\Stored Procedures\Application_PersonAddress_Create.sql" />
+    <Build Include="Application\Stored Procedures\Application_User_Create.sql" />
+    <None Include="Scripts\Application\pds-100-ins-application-users.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Build Include="Application\Indexes\UX_Application_User_LogonName.sql" />
+    <Build Include="Application\Indexes\UX_Application_AddressType_Name.sql" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1 @@
+﻿CREATE UNIQUE INDEX [UX_Application_AddressType_Name] ON [Application].[AddressType] ([Name]);
