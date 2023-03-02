@@ -32,13 +32,25 @@ namespace SqlQueryMapper
         /// </summary>
         public DbCommand? Command { get; private set; }
 
+        /// <summary>
+        /// Logger to use.
+        /// </summary>
         public ILogger? Logger { get; private set; }
 
+        /// <summary>
+        /// Creates a new <see cref="SqlQuery"/> with a connection.
+        /// </summary>
+        /// <param name="connection">Connection to use</param>
         public SqlQuery(DbConnection connection)
             : this(connection, null)
         {
         }
 
+        /// <summary>
+        /// Creates a new <see cref="SqlQuery"/> with a connection.
+        /// </summary>
+        /// <param name="connection">Connection to use</param>
+        /// <param name="transaction">Transaction to use</param>
         public SqlQuery(DbConnection connection, DbTransaction? transaction)
         {
             Connection = connection;
@@ -346,11 +358,9 @@ namespace SqlQueryMapper
         /// <summary>
         /// Helper function that flushes results of SQL query into the stream.
         /// </summary>
-        /// <typeparam name="TOutput"></typeparam>
-        /// <param name="command"></param>
-        /// <param name="stream"></param>
-        /// <param name="defaultOutput"></param>
-        /// <returns></returns>
+        /// <param name="stream">Stream to write the JSON Response to</param>
+        /// <param name="defaultOutput">The default output, e.g. "[]"</param>
+        /// <returns>An awaitable Task</returns>
         public async Task StreamAsync(TextWriter stream, SqlQueryStreamOptions options, CancellationToken cancellationToken)
         {
             bool outputIsGenerated = false;
@@ -452,11 +462,9 @@ namespace SqlQueryMapper
         /// <summary>
         /// Helper function that flushes content into stream or writer.
         /// </summary>
-        /// <typeparam name="TOutput">Type of the output - Stream or TextWriter</typeparam>
-        /// <param name="output">Stream or Output object.</param>
         /// <param name="content">Content that will be flushed into stream or text writer.</param>
         /// <param name="amount">Lengt of the bytes to be writted (-1 for string).</param>
-        /// <returns>Task</returns>
+        /// <returns>An awaitable Task</returns>
         private async Task FlushContentAsync(TextWriter writer, object content, Encoding outputEncoding, int amount = -1)
         {
             try
