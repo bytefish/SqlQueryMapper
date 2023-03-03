@@ -104,6 +104,7 @@ namespace SqlQueryMapper.Tests.Sample.Services
             using (var connection = await _connectionFactory.GetDbConnectionAsync(cancellationToken).ConfigureAwait(false))
             {
                 var query = new SqlQuery(connection).Proc("[Application].[Address_Create]")
+                    .SetLogger(_logger)
                     .Param("AddressLine1", address.AddressLine1)
                     .Param("AddressLine2", address.AddressLine2)
                     .Param("AddressLine3", address.AddressLine3)

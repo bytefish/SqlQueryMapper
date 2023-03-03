@@ -4,6 +4,18 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>SqlQueryMapper</Title>
+    <PackageProjectUrl>https://github.com/bytefish/SqlQueryMapper</PackageProjectUrl>
+    <Authors>Philipp Wagner</Authors>
+    <Company />
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>A library to simplify ADO.NET data access.</Description>
+    <Copyright>Copyright © 2022</Copyright>
+    <RepositoryUrl>https://github.com/bytefish/SqlQueryMapper</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>sql;adonet</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
