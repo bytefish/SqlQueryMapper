@@ -1,6 +1,7 @@
 ﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 
+using Microsoft.Extensions.Logging;
 using SqlQueryMapper.Extensions;
 using SqlQueryMapper.Tests.Sample.Connection;
 using SqlQueryMapper.Tests.Sample.Models;
@@ -13,10 +14,13 @@ namespace SqlQueryMapper.Tests.Sample.Services
 {
     public class PersonService
     {
+        private readonly ILogger<PersonService> _logger;
         private readonly ISqlConnectionFactory _connectionFactory;
+        
 
-        public PersonService(ISqlConnectionFactory connectionFactory)
+        public PersonService(ILogger<PersonService> logger, ISqlConnectionFactory connectionFactory)
         {
+            _logger = logger;
             _connectionFactory = connectionFactory;
         }
 
@@ -27,6 +31,7 @@ namespace SqlQueryMapper.Tests.Sample.Services
             using (var connection = await _connectionFactory.GetDbConnectionAsync(cancellationToken).ConfigureAwait(false))
             {
                 var query = new SqlQuery(connection).Proc("[Application].[Person_Create]")
+                    .SetLogger(_logger)
                     .Param("FullName", person.FullName)
                     .Param("PreferredName", person.PreferredName)
                     .Param("UserID", person.UserId)
@@ -60,6 +65,7 @@ namespace SqlQueryMapper.Tests.Sample.Services
             using (var connection = await _connectionFactory.GetDbConnectionAsync(cancellationToken).ConfigureAwait(false))
             {
                 var query = new SqlQuery(connection).Proc("[Application].[User_Create]")
+                    .SetLogger(_logger)
                     .Param("FullName", user.FullName)
                     .Param("PreferredName", user.PreferredName)
                     .Param("IsPermittedToLogon", user.IsPermittedToLogon)

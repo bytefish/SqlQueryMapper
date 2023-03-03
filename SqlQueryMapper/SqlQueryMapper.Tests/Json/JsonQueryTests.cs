@@ -80,7 +80,8 @@ namespace SqlQueryMapper.Tests.Json
 
         private async Task InitializeSampleData(ISqlConnectionFactory connectionFactory)
         {
-            var personService = new PersonService(connectionFactory);
+            var logger = CreateLogger<PersonService>();
+            var service = new PersonService(logger, connectionFactory);
 
             var user = new User
             {
@@ -91,7 +92,7 @@ namespace SqlQueryMapper.Tests.Json
                 HashedPassword = "ThisIsASuperSecretPasswordUserForTests",
             };
 
-            await personService.CreateUserAsync(user, 1, default);
+            await service.CreateUserAsync(user, 1, default);
 
             var person = new Person
             {
@@ -101,7 +102,7 @@ namespace SqlQueryMapper.Tests.Json
                 LastEditedBy = 1
             };
 
-            await personService.CreatePersonAsync(person, 1, default);
+            await service.CreatePersonAsync(person, 1, default);
 
             // Create a Billing Address
             {
@@ -112,7 +113,7 @@ namespace SqlQueryMapper.Tests.Json
                     Country = "Billing Country",
                 };
 
-                await personService.CreateAddressAsync(address, 1, default);
+                await service.CreateAddressAsync(address, 1, default);
 
                 var personAddress = new PersonAddress
                 {
@@ -121,7 +122,7 @@ namespace SqlQueryMapper.Tests.Json
                     AddressTypeId = (int)AddressTypeEnum.Billing
                 };
 
-                await personService.CreatePersonAddressAsync(personAddress, 1, default);
+                await service.CreatePersonAddressAsync(personAddress, 1, default);
             }
 
             // Create a Home Address
@@ -133,7 +134,7 @@ namespace SqlQueryMapper.Tests.Json
                     Country = "Home Country",
                 };
 
-                await personService.CreateAddressAsync(address, 1, default);
+                await service.CreateAddressAsync(address, 1, default);
 
                 var personAddress = new PersonAddress
                 {
@@ -142,7 +143,7 @@ namespace SqlQueryMapper.Tests.Json
                     AddressTypeId = (int)AddressTypeEnum.Home
                 };
 
-                await personService.CreatePersonAddressAsync(personAddress, 1, default);
+                await service.CreatePersonAddressAsync(personAddress, 1, default);
             }
         }
 

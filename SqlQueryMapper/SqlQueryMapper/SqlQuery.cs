@@ -62,7 +62,7 @@ namespace SqlQueryMapper
         /// </summary>
         /// <param name="logger"><see cref="ILogger"/> to user</param>
         /// <returns>SqlQuery with the given <see cref="ILogger"/></returns>
-        public SqlQuery SetCommand(ILogger logger)
+        public SqlQuery SetLogger(ILogger logger)
         {
             Logger = logger;
 

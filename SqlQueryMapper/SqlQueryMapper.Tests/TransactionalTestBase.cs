@@ -1,6 +1,7 @@
 ﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using System;
 using System.Transactions;
@@ -94,10 +95,22 @@ namespace SqlQueryMapper.Tests
         }
 
         /// <summary>
+        /// Creates a new Logger to be used in the Tests.
+        /// </summary>
+        /// <typeparam name="T">Type of the Logger</typeparam>
+        /// <returns>A new <see cref="ILogger{TCategoryName}"/></returns>
+        protected static ILogger<TCategoryName> CreateLogger<TCategoryName>()
+        {
+            return LoggerFactory
+                .Create(logging => logging.AddConsole())
+                .CreateLogger<TCategoryName>();
+        }
+
+        /// <summary>
         /// Creates a TransactionScope with sane default values.
         /// </summary>
         /// <returns>A <see cref="TransactionScope"/></returns>
-        public static TransactionScope CreateTransactionScope(
+        protected static TransactionScope CreateTransactionScope(
             TransactionScopeOption transactionScopeOption = TransactionScopeOption.Required,
             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted,
             TransactionScopeAsyncFlowOption asyncFlowOption = TransactionScopeAsyncFlowOption.Enabled,
@@ -111,5 +124,7 @@ namespace SqlQueryMapper.Tests
 
             return new TransactionScope(transactionScopeOption, options, asyncFlowOption);
         }
+
+
     }
 }
