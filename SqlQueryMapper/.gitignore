@@ -10,3 +10,4 @@ artifacts/
 *.xproj.user
 *.xproj
 *.user
+*.dbmdl
