@@ -48,7 +48,6 @@ namespace SqlQueryMapper.Tests.Sample.Services
         private readonly ILogger<PersonService> _logger;
         private readonly ISqlConnectionFactory _connectionFactory;
         
-
         public PersonService(ILogger<PersonService> logger, ISqlConnectionFactory connectionFactory)
         {
             _logger = logger;
